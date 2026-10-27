@@ -7,6 +7,7 @@
     "build": "tsc && vite build",
     "preview": "vite preview --host 0.0.0.0 --port 5173",
     "render:local": "bash scripts/local-render.sh",
+    "render:cloud": "bash scripts/cloud-render.sh",
     "open": "termux-open-url http://localhost:5173"
   },
   "dependencies": {
