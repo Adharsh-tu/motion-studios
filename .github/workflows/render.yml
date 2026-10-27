@@ -1,0 +1,70 @@
+name: MotionStudio Master Cloud Render
+
+on:
+  workflow_dispatch:
+    inputs:
+      composition:
+        description: 'Composition / Template to Render'
+        required: true
+        default: 'SaasFeatureDrop'
+        type: choice
+        options:
+          - 'SaasFeatureDrop'
+          - 'MobileAppShowcase'
+          - 'KineticPromo'
+      client:
+        description: 'Client Brand Config'
+        required: true
+        default: 'pulse-analytics'
+        type: choice
+        options:
+          - 'pulse-analytics'
+          - 'aurora-cloud'
+      resolution:
+        description: 'Output Resolution'
+        required: true
+        default: '1080p'
+        type: choice
+        options:
+          - '1080p'
+          - '4K'
+          - '9:16-Reel'
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Setup FFmpeg
+        uses: FedericoCarboni/setup-ffmpeg@v3
+        with:
+          ffmpeg-version: release
+
+      - name: Install Dependencies
+        run: npm ci || npm install
+
+      - name: Render Remotion Video
+        run: |
+          mkdir -p out
+          npx remotion render src/index.ts ${{ github.event.inputs.composition }} out/master-${{ github.event.inputs.composition }}.mp4 \
+            --props='{"brandId":"${{ github.event.inputs.client }}"}' \
+            --concurrency=4 \
+            --jpeg-quality=95 \
+            --crf=16
+
+      - name: Upload Video Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: promo-${{ github.event.inputs.composition }}-${{ github.event.inputs.client }}
+          path: out/*.mp4
+          retention-days: 14
