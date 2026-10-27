@@ -1,5 +1,32 @@
 import { BrandConfig } from '../types/motion';
 
+export const instaGrowth: BrandConfig = {
+  id: 'insta-growth',
+  name: 'InstaPulse AI',
+  clientName: 'Creator Growth Studio',
+  tagline: 'Automate viral reach, reels engagement, and audience conversion',
+  primaryColor: '#e1306c', // Instagram Vibrant Magenta
+  secondaryColor: '#f77737', // Instagram Warm Orange
+  accentColor: '#833ab4', // Instagram Purple
+  bgGradient: ['#280538', '#07020d'],
+  metric: {
+    value: 284.5,
+    prefix: '+',
+    suffix: '%',
+    label: 'Organic Reach & Engagement',
+    growth: '10x Viral Velocity'
+  },
+  features: [
+    'Automated Story Funnels',
+    'AI Hook & Caption Generator',
+    'Real-time Follower Conversion'
+  ],
+  ctaText: 'Scale Your Account Free',
+  url: 'instapulse.io/grow',
+  accentGlow: 'rgba(225, 48, 108, 0.45)',
+  screenshotUrl: '/insta.png'
+};
+
 export const pulseAnalytics: BrandConfig = {
   id: 'pulse-analytics',
   name: 'Pulse AI',
@@ -23,7 +50,8 @@ export const pulseAnalytics: BrandConfig = {
   ],
   ctaText: 'Start Monitoring Free',
   url: 'pulse.dev/start',
-  accentGlow: 'rgba(99, 102, 241, 0.35)'
+  accentGlow: 'rgba(99, 102, 241, 0.35)',
+  screenshotUrl: '/insta.png'
 };
 
 export const auroraCloud: BrandConfig = {
@@ -53,6 +81,7 @@ export const auroraCloud: BrandConfig = {
 };
 
 export const defaultClients: Record<string, BrandConfig> = {
+  'insta-growth': instaGrowth,
   'pulse-analytics': pulseAnalytics,
   'aurora-cloud': auroraCloud
 };

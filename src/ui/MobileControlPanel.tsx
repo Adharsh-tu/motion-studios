@@ -189,6 +189,16 @@ export const MobileControlPanel: React.FC<MobileControlPanelProps> = ({
               />
             </div>
             <div>
+              <label className="text-[10px] text-slate-400 font-mono">Screenshot Image</label>
+              <input
+                type="text"
+                value={currentBrand.screenshotUrl || ''}
+                placeholder="/insta.png"
+                onChange={(e) => onUpdateBrand({ ...currentBrand, screenshotUrl: e.target.value })}
+                className="w-full bg-slate-950 border border-white/10 rounded-lg px-2 py-1 text-white text-xs mt-0.5 font-mono"
+              />
+            </div>
+            <div className="col-span-2">
               <label className="text-[10px] text-slate-400 font-mono">Primary Color</label>
               <div className="flex items-center gap-1.5 mt-0.5">
                 <input

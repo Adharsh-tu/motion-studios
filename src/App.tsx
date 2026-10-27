@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { Player, PlayerRef } from '@remotion/player';
 import { AspectRatio, BrandConfig, TemplateId } from './types/motion';
-import { pulseAnalytics } from './clients';
+import { instaGrowth, pulseAnalytics } from './clients';
 import { SaasFeatureDrop } from './templates/SaasFeatureDrop';
 import { MobileAppShowcase } from './templates/MobileAppShowcase';
 import { KineticPromo } from './templates/KineticPromo';
@@ -10,9 +10,9 @@ import { exportCompositionToVideo, downloadBlob } from './utils/clientExporter';
 import { Layers, Film, Clapperboard, ExternalLink } from 'lucide-react';
 
 export const App: React.FC = () => {
-  const [template, setTemplate] = useState<TemplateId>('saas-feature-drop');
-  const [brand, setBrand] = useState<BrandConfig>(pulseAnalytics);
-  const [aspectRatio, setAspectRatio] = useState<AspectRatio>('16:9');
+  const [template, setTemplate] = useState<TemplateId>('mobile-app-showcase');
+  const [brand, setBrand] = useState<BrandConfig>(instaGrowth);
+  const [aspectRatio, setAspectRatio] = useState<AspectRatio>('9:16');
   const [isExporting, setIsExporting] = useState<boolean>(false);
   const [exportPercentage, setExportPercentage] = useState<number>(0);
 

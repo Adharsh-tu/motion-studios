@@ -23,6 +23,7 @@ export interface BrandConfig {
   url: string;
   logoSvg?: string;
   accentGlow?: string;
+  screenshotUrl?: string;
 }
 
 export interface CompositionProps {
